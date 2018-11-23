@@ -21,5 +21,9 @@ public class UserController {
         userService.save(user);
     }
 
+    @GetMapping("/test")
+    @ResponseStatus(HttpStatus.OK)
+    public void test(){
 
+    }
 }

@@ -26,19 +26,11 @@ public class ConfirmationService {
         helper.setTo(user.getEmail());
         helper.setText(getEmailBody(user), true);
        mimeMessage.setSubject("Welcome");
-
-
-
-        //simpleMailMessage.setTo(user.getEmail());
-       // simpleMailMessage.setSubject("Welcome");
         emailSender.send(mimeMessage);
     }
 
     public void confirmRegistration(String userKey){
-        User user = userRepository.findByUserKey(userKey);
-        if(user==null){
-            throw new NullPointerException();
-        }
+        User user = userRepository.findByUserKey(userKey).orElseThrow(NullPointerException::new);
         user.setUserKey(null);
         user.setEnabled(true);
         userRepository.save(user);
@@ -54,12 +46,6 @@ public class ConfirmationService {
                 ">here</a> to activate your account." +
                 "</body>" +
                 "</html>";
-      /*String text=  "Hi "+user.getName() +",\nThank you for creating an account\n" ;
-      text+="Please confirm your registration:\n";
-      Hyperlink hyperlink=new Hyperlink("localhost:8090/api/confirmation/"+user.getUserKey());
-      text+=hyperlink;*/
-
-
 
     }
 
