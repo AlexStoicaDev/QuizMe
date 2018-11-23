@@ -4,8 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import quizme.demo.dtos.UserDtoIn;
-import quizme.demo.entities.User;
 import quizme.demo.services.UserService;
+
+import javax.mail.MessagingException;
 
 @RestController
 @RequestMapping("/api/user")
@@ -16,7 +17,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveUser(@RequestBody UserDtoIn user){
+    public void saveUser(@RequestBody UserDtoIn user) throws MessagingException {
         userService.save(user);
     }
 

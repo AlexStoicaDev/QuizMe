@@ -3,7 +3,6 @@ package quizme.demo.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
@@ -13,8 +12,9 @@ public class MailSenderConfiguration {
 
 
     @Bean
-    public JavaMailSender getJavaMailSender(){
+    public  JavaMailSenderImpl getJavaMailSender(){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 

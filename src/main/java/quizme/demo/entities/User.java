@@ -23,6 +23,8 @@ public class User {
     private String email;
     private String name;
     private String phoneNumber;
+    private Boolean enabled;
+    private String userKey;
 
     @Setter(AccessLevel.NONE)
     private String password;

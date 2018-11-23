@@ -6,4 +6,5 @@ import quizme.demo.entities.User;
 public interface UserRepository extends JpaRepository<User,Integer> {
     User findByEmail(String email);
     User findByPhoneNumber(String phoneNumber);
+    User findByUserKey(String userKey);
 }
