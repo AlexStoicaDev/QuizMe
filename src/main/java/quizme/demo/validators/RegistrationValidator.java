@@ -1,0 +1,20 @@
+package quizme.demo.validators;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import quizme.demo.dtos.UserDtoIn;
+import quizme.demo.repositories.UserRepository;
+
+@Service
+@RequiredArgsConstructor
+public class RegistrationValidator {
+
+    private final UserRepository userRepository;
+
+    public void validate(UserDtoIn userDtoIn){
+        if( userRepository.findByEmail(userDtoIn.getEmail())!=null){
+            throw new NullPointerException();
+        }
+
+    }
+}

@@ -1,0 +1,18 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/quiz_me?useSSL=false
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: create
+        show-sql: true
+    flyway:
+        locations: classpath:/db/migration,classpath:/db/migration_mock
+
+
+server:
+    port: 8090
+
+
