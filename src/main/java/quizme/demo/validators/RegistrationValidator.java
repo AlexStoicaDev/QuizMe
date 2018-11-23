@@ -11,8 +11,9 @@ public class RegistrationValidator {
 
     private final UserRepository userRepository;
 
-    public void validate(UserDtoIn userDtoIn){
-        if( userRepository.findByEmail(userDtoIn.getEmail())!=null){
+    public void validate(UserDtoIn userDtoIn) {
+        if (userRepository.findByEmail(userDtoIn.getEmail()) != null ||
+                userRepository.findByPhoneNumber(userDtoIn.getPhoneNumber()) != null) {
             throw new NullPointerException();
         }
 
