@@ -12,14 +12,14 @@ import quizme.demo.validators.RegistrationValidator;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final EmailService emailService;
+    private final ConfirmationService confirmationService;
     private final RegistrationValidator registrationValidator;
 
     public void save(UserDtoIn user){
 
         registrationValidator.validate(user);
         userRepository.save(UserMapper.toInBound(user));
-        emailService.sendRegistrationEmail(user);
+        confirmationService.sendRegistrationEmail(user);
 
     }
 }
