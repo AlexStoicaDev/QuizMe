@@ -2,6 +2,7 @@ package quizme.demo.cotrollers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import quizme.demo.dtos.UserDtoIn;
 import quizme.demo.services.UserService;
@@ -23,6 +24,7 @@ public class UserController {
 
     @GetMapping("/test")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void test(){
 
     }

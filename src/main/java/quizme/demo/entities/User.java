@@ -35,7 +35,7 @@ public class User {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> customerRoles;
+    private List<Role> userRoles;
 
     public void setPassword(@NotNull String password){
         this.password=new BCryptPasswordEncoder().encode(password);

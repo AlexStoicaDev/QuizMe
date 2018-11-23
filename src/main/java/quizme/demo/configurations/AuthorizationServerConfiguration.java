@@ -52,8 +52,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) {
 
-
-
         security.passwordEncoder(passwordEncoder);
     }
 

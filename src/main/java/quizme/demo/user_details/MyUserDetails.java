@@ -18,7 +18,7 @@ public class MyUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.
-            getCustomerRoles().
+                getUserRoles().
             parallelStream().
             map(role -> role.getName().substring(5)).
             map(SimpleGrantedAuthority::new).
