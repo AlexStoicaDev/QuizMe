@@ -1,27 +1,17 @@
-package quizme.demo.entities.questions;
+package quizme.demo.dtos;
 
 import lombok.Data;
 import quizme.demo.enums.QuestionCategory;
 import quizme.demo.enums.QuestionDifficultyLevel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@Inheritance
-public abstract class Question {
-
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class NonScoredQuestionDtoIn {
 
     private String questionSentence;
     private LocalDateTime timeConstraint;
     private QuestionCategory questionCategory;
     private QuestionDifficultyLevel questionDifficultyLevel;
+    private String answer;
 }

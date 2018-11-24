@@ -47,7 +47,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/api/user").anonymous()
-            .and()
+                .and()
             .csrf().disable()
         ;
 
