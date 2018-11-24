@@ -6,10 +6,10 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: validate
         show-sql: true
     flyway:
-        locations: classpath:/db/migration,classpath:/db/migration_mock
+        locations: classpath:/db/migration
 
     mail:
         host: smtp.gmail.com
