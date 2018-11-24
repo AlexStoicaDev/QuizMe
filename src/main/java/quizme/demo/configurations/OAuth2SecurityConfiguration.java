@@ -34,7 +34,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
 
-        /* new UserNotFoundException("User was not found", "Bad credentials")))*/
+        /* new UserNotFoundException("AppUser was not found", "Bad credentials")))*/
         auth.userDetailsService(email -> new MyUserDetails(userRepository.
             findByEmail(email).orElseThrow(NullPointerException::new)));
 

@@ -1,11 +1,10 @@
 package quizme.demo.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import quizme.demo.entities.User;
+import quizme.demo.entities.AppUser;
 import quizme.demo.repositories.UserRepository;
 
 import javax.mail.MessagingException;
@@ -18,31 +17,31 @@ public class ConfirmationService {
     private final JavaMailSenderImpl emailSender;
     private final UserRepository userRepository;
 
-    public void sendRegistrationEmail(User user) throws MessagingException {
+    public void sendRegistrationEmail(AppUser appUser) throws MessagingException {
 
 
         MimeMessage mimeMessage=emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        helper.setTo(user.getEmail());
-        helper.setText(getEmailBody(user), true);
+        helper.setTo(appUser.getEmail());
+        helper.setText(getEmailBody(appUser), true);
        mimeMessage.setSubject("Welcome");
         emailSender.send(mimeMessage);
     }
 
     public void confirmRegistration(String userKey){
-        User user = userRepository.findByUserKey(userKey).orElseThrow(NullPointerException::new);
-        user.setUserKey(null);
-        user.setEnabled(true);
-        userRepository.save(user);
+        AppUser appUser = userRepository.findByUserKey(userKey).orElseThrow(NullPointerException::new);
+        appUser.setUserKey(null);
+        appUser.setEnabled(true);
+        userRepository.save(appUser);
     }
 
-    private String getEmailBody(User user){
+    private String getEmailBody(AppUser appUser){
 
         return "<html>" +
                 "<head><title>"+"Welcome"+"</title></head>" +
                 "<body>" +
                 "<h1>Thank you for creating an account</h1>"+
-                "Click <a href=\"" + "http://localhost:8090/api/confirmation/"+user.getUserKey()+"\""+
+                "Click <a href=\"" + "http://localhost:8090/api/confirmation/"+ appUser.getUserKey()+"\""+
                 ">here</a> to activate your account." +
                 "</body>" +
                 "</html>";

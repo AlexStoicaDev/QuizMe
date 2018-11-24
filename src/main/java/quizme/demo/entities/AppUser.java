@@ -9,20 +9,23 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue
     private Integer id;
 
+    @Email
     private String email;
     private String name;
+
     private String phoneNumber;
     private Boolean enabled;
     private String userKey;

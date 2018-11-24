@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import quizme.demo.entities.User;
+import quizme.demo.entities.AppUser;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MyUserDetails implements UserDetails {
 
-    private User user;
+    private AppUser appUser;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.
+        return appUser.
                 getUserRoles().
             parallelStream().
             map(role -> role.getName().substring(5)).
@@ -27,12 +27,12 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return appUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return appUser.getEmail();
     }
 
     @Override
@@ -52,6 +52,6 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return appUser.getEnabled();
     }
 }
