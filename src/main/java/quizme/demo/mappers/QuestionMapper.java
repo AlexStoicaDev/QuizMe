@@ -2,6 +2,7 @@ package quizme.demo.mappers;
 
 import lombok.experimental.UtilityClass;
 import quizme.demo.dtos.NonScoredQuestionDtoIn;
+import quizme.demo.dtos.QuestionDtoOut;
 import quizme.demo.dtos.ScoredQuestionDtoIn;
 import quizme.demo.entities.questions.NonScoredQuestion;
 import quizme.demo.entities.questions.ScoredQuestion;
@@ -13,6 +14,7 @@ public class QuestionMapper {
 
         ScoredQuestion scoredQuestion = new ScoredQuestion();
         scoredQuestion.setAnswers(scoredQuestionDtoIn.getAnswers());
+        scoredQuestion.setQuestionSentence(scoredQuestionDtoIn.getQuestionSentence());
         scoredQuestion.setScore(scoredQuestionDtoIn.getScore());
         scoredQuestion.setQuestionCategory(scoredQuestionDtoIn.getQuestionCategory());
         scoredQuestion.setQuestionDifficultyLevel(scoredQuestionDtoIn.getQuestionDifficultyLevel());
@@ -32,5 +34,12 @@ public class QuestionMapper {
 
         return nonScoredQuestion;
 
+    }
+
+    public QuestionDtoOut toOutBound(ScoredQuestion question) {
+        QuestionDtoOut questionDtoOut=new QuestionDtoOut();
+        questionDtoOut.setSentence(question.getQuestionSentence());
+        questionDtoOut.setOptions(question.getOptions());
+        return questionDtoOut;
     }
 }

@@ -69,15 +69,15 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 
-      /*  endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler).authenticationManager(authenticationManager)
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);*/
+        endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler).authenticationManager(authenticationManager)
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
 
         endpoints.addInterceptor(new HandlerInterceptorAdapter() {
             @Override
             public boolean preHandle(HttpServletRequest hsr, HttpServletResponse rs, Object o)  {
 
-                endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler).authenticationManager(authenticationManager)
-                        .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+               /* endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler).authenticationManager(authenticationManager)
+                        .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);*/
 
                 rs.setHeader("Access-Control-Allow-Origin", "*");
                 rs.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");

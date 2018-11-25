@@ -1,11 +1,13 @@
 package quizme.demo.dtos;
 
 import lombok.Data;
+import quizme.demo.entities.Answer;
+import quizme.demo.entities.Options;
 import quizme.demo.enums.QuestionCategory;
 import quizme.demo.enums.QuestionDifficultyLevel;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
 
 @Data
 public class ScoredQuestionDtoIn {
@@ -14,6 +16,6 @@ public class ScoredQuestionDtoIn {
     private QuestionCategory questionCategory;
     private QuestionDifficultyLevel questionDifficultyLevel;
     private Integer score;
-    private List<String> answers;
-    private List<String> options;
+    private ArrayList<Answer> answers;
+    private ArrayList<Options> options;
 }

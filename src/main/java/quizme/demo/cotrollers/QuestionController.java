@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import quizme.demo.dtos.NonScoredQuestionDtoIn;
 import quizme.demo.dtos.ScoredQuestionDtoIn;
+import quizme.demo.entities.Answer;
 import quizme.demo.entities.questions.Question;
 import quizme.demo.enums.QuestionCategory;
 import quizme.demo.enums.QuestionDifficultyLevel;
@@ -12,6 +13,7 @@ import quizme.demo.mappers.QuestionMapper;
 import quizme.demo.services.QuestionService;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,7 +48,7 @@ public class QuestionController {
     @PutMapping("/scored/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable("id") Integer questionId, String questionSentence, LocalDateTime timeConstraint, QuestionCategory questionCategory,
-                       QuestionDifficultyLevel questionDifficultyLevel, Integer score, List<String> answers) {
+                       QuestionDifficultyLevel questionDifficultyLevel, Integer score, ArrayList<Answer> answers) {
         questionService.update(questionId, questionSentence, timeConstraint, questionCategory,
                 questionDifficultyLevel, score, answers);
 
@@ -70,7 +72,7 @@ public class QuestionController {
     @GetMapping("/sorted-difficulty-descending")
     @ResponseStatus(HttpStatus.OK)
     public List<Question> descending() {
-        return questionService.getSortedQuestinsDescending();
+        return questionService.getSortedQuestionsDescending();
     }
 
     @GetMapping("/filter/category/{category}")

@@ -1,6 +1,8 @@
 package quizme.demo.entities.questions;
 
 import lombok.Data;
+import quizme.demo.entities.Answer;
+import quizme.demo.entities.Options;
 import quizme.demo.entities.Quiz;
 import quizme.demo.enums.QuestionCategory;
 import quizme.demo.enums.QuestionDifficultyLevel;
@@ -29,4 +31,11 @@ public abstract class Question {
             joinColumns = @JoinColumn(name = "question_id"),
             inverseJoinColumns = @JoinColumn(name = "quiz_id"))
     private List<Quiz> quizList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    private List<Answer> answers;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    private List<Options> options;
 }

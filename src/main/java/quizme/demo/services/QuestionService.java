@@ -3,6 +3,7 @@ package quizme.demo.services;
 import com.google.common.collect.Iterables;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import quizme.demo.entities.Answer;
 import quizme.demo.entities.questions.NonScoredQuestion;
 import quizme.demo.entities.questions.Question;
 import quizme.demo.entities.questions.ScoredQuestion;
@@ -24,7 +25,8 @@ public class QuestionService {
 
 
     public void save(ScoredQuestion scoredQuestion) {
-        scoredQuestionRepository.save(scoredQuestion);
+        //scoredQuestionRepository.save(scoredQuestion);
+        questionRepository.save(scoredQuestion);
     }
 
 
@@ -40,7 +42,7 @@ public class QuestionService {
 
 
     public void update(Integer questionId, String questionSentence, LocalDateTime timeConstraint, QuestionCategory questionCategory,
-                       QuestionDifficultyLevel questionDifficultyLevel, Integer score, List<String> answers) {
+                       QuestionDifficultyLevel questionDifficultyLevel, Integer score, ArrayList<Answer> answers) {
         ScoredQuestion question = scoredQuestionRepository.findById(questionId).orElseThrow(NullPointerException::new);
         updateBasicQuestion(questionSentence, timeConstraint, questionCategory, questionDifficultyLevel, question);
 
@@ -94,7 +96,8 @@ public class QuestionService {
     public List<Question> getSortedQuestionsAscending() {
         return sort(questionRepository.findAll(), Comparator.comparingInt((Question o) -> o.getQuestionDifficultyLevel().ordinal()));
     }
-    public List<Question> getSortedQuestinsDescending(){
+
+    public List<Question> getSortedQuestionsDescending() {
         List<Question> sortedQuestionsAscending = getSortedQuestionsAscending();
         Collections.reverse(sortedQuestionsAscending);
         return sortedQuestionsAscending;
@@ -102,7 +105,7 @@ public class QuestionService {
     }
 
     public List<Question> filterByCategory(QuestionCategory questionCategory) {
-       return questionRepository.findAllByQuestionCategory(questionCategory);
+        return questionRepository.findAllByQuestionCategory(questionCategory);
     }
 
     public List<Question> filterByDiffcultyLevel(QuestionDifficultyLevel questionDifficultyLevel) {

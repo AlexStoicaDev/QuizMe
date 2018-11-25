@@ -1,20 +1,16 @@
 package quizme.demo.entities.questions;
 
 import lombok.Data;
-import org.hibernate.annotations.Type;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import java.util.List;
 
 
 @Data
 @Entity
+@NoArgsConstructor
 public class ScoredQuestion extends Question {
     private Integer score;
 
-    @Type(type = "string")
-    private List<String> answers;
 
-    @Type(type = "string")
-    private List<String> options;
 }
