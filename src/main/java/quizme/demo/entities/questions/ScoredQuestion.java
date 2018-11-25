@@ -14,4 +14,7 @@ public class ScoredQuestion extends Question {
 
     @Type(type = "string")
     private List<String> answers;
+
+    @Type(type = "string")
+    private List<String> options;
 }

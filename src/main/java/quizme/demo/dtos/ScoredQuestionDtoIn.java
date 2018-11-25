@@ -15,4 +15,5 @@ public class ScoredQuestionDtoIn {
     private QuestionDifficultyLevel questionDifficultyLevel;
     private Integer score;
     private List<String> answers;
+    private List<String> options;
 }

@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/question")
 //@PreAuthorize("hasAuthority('ADMIN')")
+@CrossOrigin("http://108fb526.ngrok.io")
 public class QuestionController {
 
 
@@ -83,5 +84,7 @@ public class QuestionController {
     public List<Question> sortDifficulty(@PathVariable("difficulty") QuestionDifficultyLevel questionDifficultyLevel) {
         return questionService.filterByDiffcultyLevel(questionDifficultyLevel);
     }
+
+
 }
 

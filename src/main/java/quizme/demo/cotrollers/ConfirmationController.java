@@ -8,6 +8,7 @@ import quizme.demo.services.ConfirmationService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/confirmation")
+@CrossOrigin("http://108fb526.ngrok.io")
 public class ConfirmationController {
 
     private final ConfirmationService confirmationService;

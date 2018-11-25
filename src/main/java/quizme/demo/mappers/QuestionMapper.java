@@ -17,6 +17,7 @@ public class QuestionMapper {
         scoredQuestion.setQuestionCategory(scoredQuestionDtoIn.getQuestionCategory());
         scoredQuestion.setQuestionDifficultyLevel(scoredQuestionDtoIn.getQuestionDifficultyLevel());
         scoredQuestion.setTimeConstraint(scoredQuestionDtoIn.getTimeConstraint());
+        scoredQuestion.setOptions(scoredQuestionDtoIn.getOptions());
 
         return scoredQuestion;
     }
@@ -24,10 +25,10 @@ public class QuestionMapper {
     public NonScoredQuestion toInBound(NonScoredQuestionDtoIn nonScoredQuestionDtoIn) {
 
         NonScoredQuestion nonScoredQuestion = new NonScoredQuestion();
-       nonScoredQuestion.setAnswer(nonScoredQuestionDtoIn.getAnswer());
-       nonScoredQuestion.setQuestionCategory(nonScoredQuestion.getQuestionCategory());
-       nonScoredQuestion.setQuestionDifficultyLevel(nonScoredQuestion.getQuestionDifficultyLevel());
-       nonScoredQuestion.setTimeConstraint(nonScoredQuestion.getTimeConstraint());
+        nonScoredQuestion.setAnswer(nonScoredQuestionDtoIn.getAnswer());
+        nonScoredQuestion.setQuestionCategory(nonScoredQuestion.getQuestionCategory());
+        nonScoredQuestion.setQuestionDifficultyLevel(nonScoredQuestion.getQuestionDifficultyLevel());
+        nonScoredQuestion.setTimeConstraint(nonScoredQuestion.getTimeConstraint());
 
         return nonScoredQuestion;
 

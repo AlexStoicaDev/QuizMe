@@ -12,6 +12,7 @@ import javax.mail.MessagingException;
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
+@CrossOrigin("http://108fb526.ngrok.io")
 public class UserController {
 
     private final UserService userService;
